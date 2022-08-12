@@ -1,0 +1,38 @@
+ALGORITHM LINEAR DATA STRUCTURE lastquestions:
+VAR
+    array_one : ARRAY_OF INTEGER
+    array_two : ARRAY_OF INTEGER
+    sum:INTEGER:=0
+    counter:INTEGER
+BEGIN
+
+FOR i FROM 0 TO length(array_one)-1 STEP 1  DO
+   Read (array_one[i])
+
+END_FOR
+FOR j FROM 0 TO length( array_two)-1 STEP 1 DO
+    Read (array_two[j])
+
+END_FOR
+FOR k FROM 0 TO length(array_one)-1 STEP 1 DO
+   FOR l FROM 0 TO length( array_two)-1  STEP 1  DO
+   IF (array_one[k]=array_two[l]) THEN
+       counter:=counter+1
+   END_IF
+   END_FOR
+   IF (counter=length(array_two)) THEN
+       sum:=sum+array_one[k]
+   END_IF
+FOR k FROM 0 TO length(array_two)-1 STEP 1 DO
+   FOR l FROM 0 TO length(array_one )-1  STEP 1  DO
+   IF (array_one[k]=array_two[l]) THEN
+       counter:=counter+1
+   END_IF
+   END_FOR
+   IF (counter=length(array_one)) THEN
+       sum:=sum+array_two[l]
+   END_IF
+END_FOR
+    Write(sum)
+
+END

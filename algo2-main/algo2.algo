@@ -1,0 +1,71 @@
+ALGORITHM LINEAR DATA STRUCTURE solution one:
+VAR
+    array_one : ARRAY_OF INTEGER
+    array_two : ARRAY_OF INTEGER
+    sum:INTEGER:=0
+    counter:INTEGER
+BEGIN
+
+FOR i FROM 0 TO length(array_one)-1 STEP 1  DO
+   Read (array_one[i])
+
+END_FOR
+FOR j FROM 0 TO length( array_two)-1 STEP 1 DO
+    Read (array_two[j])
+
+END_FOR
+FOR k FROM 0 TO length(array_one)-1 STEP 1 DO
+   FOR l FROM 0 TO length( array_two)-1  STEP 1  DO
+   IF (array_one[k]<>array_two[l]) THEN
+       counter:=counter+1
+   END_IF
+   END_FOR
+   IF (counter=length(array_two)) THEN
+       sum:=sum+array_one[k]
+   END_IF
+FOR k FROM 0 TO length(array_two)-1 STEP 1 DO
+   FOR l FROM 0 TO length(array_one )-1  STEP 1  DO
+   IF (array_one[k]<>array_two[l]) THEN
+       counter:=counter+1
+   END_IF
+   END_FOR
+   IF (counter=length(array_one)) THEN
+       sum:=sum+array_two[l]
+   END_IF
+END_FOR
+ Write(sum)
+END
+
+ALGORITHM LINEAR DATA STRUCTURE solution two:
+VAR
+    array_one : ARRAY_OF INTEGER;
+    array_two : ARRAY_OF INTEGER;
+    htab:HASH_TABLE<Key_type,Value_type>;
+    array_v:ARRAY_OF INTEGER;
+    array_k:ARRAY_OF INTEGER;
+    sum:INTEGER:=0
+
+BEGIN
+ FOR i FROM 0 TO length(array_one)-1 STEP 1  DO
+   Read (array_one[i])
+
+END_FOR
+FOR j FROM 0 TO length( array_two)-1 STEP 1 DO
+    Read (array_two[j])
+
+FOR k FROM 0 TO length(array_one)-1 STEP step  DO
+    htab.insert(array_one[k].1)
+END_FOR
+FOR l FROM 0 TO length( array_two)-1 STEP step  DO
+    IF (htab.lookup(array_two[l]=true) THEN
+        htab.insert(array_two[l].2)
+    END_IF
+ array_v:=htab.getvalues
+ array_k:=htab.getkeys
+FOR m FROM 0 TO (array_v)-1  STEP 1 DO
+    IF (array_v[m]=1) THEN
+        sum:=sum+array_k
+    END_IF
+END_FOR
+ write(sum) 
+ END
